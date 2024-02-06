@@ -1,7 +1,4 @@
-
 import 'package:flutter/material.dart';
-import 'package:weather_app/models/weather_model.dart';
-import 'package:weather_app/services/weather_service.dart';
 
 class SearchView extends StatelessWidget {
   const SearchView({super.key});
@@ -17,9 +14,7 @@ class SearchView extends StatelessWidget {
         child: Center(
           child: TextField(
             onSubmitted: (value) async {
-               weatherModel =
-                  await WeatherService().getWeather(cityName: value);
-             Navigator.pop(context);
+              Navigator.pop(context);
             },
             decoration: InputDecoration(
               contentPadding: const EdgeInsets.symmetric(
@@ -42,4 +37,3 @@ class SearchView extends StatelessWidget {
     );
   }
 }
-WeatherModel? weatherModel;
