@@ -32,18 +32,29 @@ class HomeView extends StatelessWidget {
           ),
         ],
       ),
-      body:
-          BlocBuilder<GetWeatherCubit, WeatherState>(builder: (context, state) {
-        if (state is InitialState) {
-          return const NoWeatherBody();
-        } else if (state is WeatherLoadedState) {
-          return const WeatherInfoBody();
-        } else {
-          return const Text(
-            'oops there was an error , try later',
-          );
-        }
-      }),
+      body: BlocBuilder<GetWeatherCubit, WeatherState>(
+        builder: (context, state) {
+          if (state is InitialState) {
+            return const NoWeatherBody();
+          } else if (state is WeatherLoadedState) {
+            return const WeatherInfoBody();
+          } else {
+            return const SizedBox(
+              height: double.infinity,
+              width: double.infinity,
+              child: Center(
+                child: Text(
+                  'oops there was an error , try later',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18,
+                  ),
+                ),
+              ),
+            );
+          }
+        },
+      ),
     );
   }
 }
